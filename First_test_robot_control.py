@@ -4,13 +4,16 @@ from os.path import exists
 script, input_file = argv
 
 print(f"Does the log file exists? {exists(input_file)}")
-print("Ready, hit RETURN to continue, CTRL-C to abort.")
+print("Ready, ENTER DIRECTION to continue, CTRL-C to abort.")
+
 #starting coordinates of a robot
 x = 0
 y = 0
 
 #log for history
 history_log = []
+
+#making a function to update a log-file
 
 def update_log():
     global x, y, history_log
@@ -20,6 +23,7 @@ def update_log():
     log_file = open(input_file, 'a')
     log_file.write(robot_position + '\n')
     log_file.close()
+    print("Robot position:", f"x: {x}, y: {y}")
 
     # writing to memory
     history_log.append(robot_position) 
@@ -27,30 +31,43 @@ def update_log():
 print("Robot position:", f"x: {x}, y: {y}")
 
 #entering a command to move: up, down, left, right
+#type "history" to show log, type "quit" to quit and clean the file
 
 #infinite loop
 while True:
-    command = input("Enter command: ") # input moves us into an infitine loop
-    
+    command = input("Enter command: up, down, left, right, history or quit > ") # input moves us into an infitine loop
+    #quiting after entering "quit"
     if command == "quit":
         open(input_file, 'w').close()
         break
-
+    
     elif command == "up":
-        y += 1
-        update_log()
-
+        if y < 5:
+            y += 1
+            update_log()
+        else:
+            print("Out of range")
+        
     elif command == "down":
-        y -= 1
-        update_log()
+        if y > -5:
+            y -= 1
+            update_log()
+        else:
+            print("Out of range")
 
     elif command == "left":
-        x -= 1
-        update_log()
+        if x > -5:
+            x -= 1
+            update_log()
+        else:
+            print("Out of range")
 
     elif command == "right":
-        x += 1
-        update_log()
+        if x < 5:
+            x += 1
+            update_log()
+        else:
+            print("Out of range")
 
     elif command == "history":
         for entry in history_log:
@@ -58,18 +75,3 @@ while True:
 
     else:
         print("Unknown command")
-    #making a range
-    if x > 5:
-        x -= 1
-        print("out of range")
-    elif x < -5:
-        x += 1
-        print("out of range")
-    elif y > 5:
-        y -= 1
-        print("out of range")
-    elif y < -5:
-        y += 1
-        print("out of range")
-    else:
-        print("Robot position:", f"x: {x}, y: {y}")
