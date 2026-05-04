@@ -36,42 +36,43 @@ print("Robot position:", f"x: {x}, y: {y}")
 #infinite loop
 while True:
     command = input("Enter command: up, down, left, right, history or quit > ") # input moves us into an infitine loop
-    #quiting after entering "quit"
-    if command == "quit":
-        open(input_file, 'w').close()
-        break
-    
-    elif command == "up":
-        if y < 5:
-            y += 1
-            update_log()
-        else:
-            print("Out of range")
-        
-    elif command == "down":
-        if y > -5:
-            y -= 1
-            update_log()
-        else:
-            print("Out of range")
+    match command:
+        case "quit":
+            #quiting after entering "quit"
+            open(input_file, 'w').close()
+            break
 
-    elif command == "left":
-        if x > -5:
-            x -= 1
-            update_log()
-        else:
-            print("Out of range")
+        case "up":
+            if y < 5:
+                y += 1
+                update_log()
+            else:
+                print("Out of range")
 
-    elif command == "right":
-        if x < 5:
-            x += 1
-            update_log()
-        else:
-            print("Out of range")
+        case "down":
+            if y > -5:
+                y -= 1
+                update_log()
+            else:
+                print("Out of range")
 
-    elif command == "history":
-        for entry in history_log:
-            print(entry)
+        case "left":
+            if x > -5:
+                x -= 1
+                update_log()
+            else:
+                print("Out of range")
 
-    else:
-        print("Unknown command")
+        case "right":
+            if x < 5:
+                x += 1
+                update_log()
+            else:
+                print("Out of range")
+
+        case "history":
+            for entry in history_log:
+                print(entry)
+
+        case _:
+            print("Unknown command")
