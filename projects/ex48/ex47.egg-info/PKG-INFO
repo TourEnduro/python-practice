@@ -1,0 +1,13 @@
+Metadata-Version: 2.4
+Name: ex47
+Version: 0.1
+Summary: My first test project
+Home-page: URL to get it at.
+Download-URL: Where to download it.
+Author: Dmitry
+Author-email: dmitry.alex.sergeev@gmail.com
+Dynamic: author
+Dynamic: author-email
+Dynamic: download-url
+Dynamic: home-page
+Dynamic: summary
