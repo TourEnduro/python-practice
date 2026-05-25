@@ -1,0 +1,10 @@
+setup.py
+ex49/__init__.py
+ex49/lexicon.py
+ex49/parser.py
+ex49.egg-info/PKG-INFO
+ex49.egg-info/SOURCES.txt
+ex49.egg-info/dependency_links.txt
+ex49.egg-info/top_level.txt
+tests/test_lexicon.py
+tests/test_parser.py
