@@ -34,14 +34,18 @@ class Solution:
         # Return the result
         return dummy.next
     
-# Create a linked list from input string
+# Enter the first string of numbers
 
 print("Type first string of unsorted numbers")
 input_list1 = input('> ').split()
 
+# Enter the second string of numbers
+
 print("Type second string of unsorted numbers")
 input_list2 = input('> ').split()
-    
+
+# Create a linked list from the first input string
+
 dummy1 = ListNode(0)
 node1 = dummy1
 
@@ -49,6 +53,8 @@ for i in range(len(input_list1)):
     node1.next = ListNode(int(input_list1[i]))
     node1 = node1.next
 list1 = dummy1.next
+
+# Create a linked list from the second input string
 
 dummy2 = ListNode(0)
 node2 = dummy2
@@ -58,8 +64,12 @@ for i in range(len(input_list2)):
     node2 = node2.next
 list2 = dummy2.next
 
+# Calling the mergeTwoLists method to iterate both lists
+
 solution = Solution()
 result = solution.mergeTwoLists(list1, list2)
+
+# Iterate through the linked list to print the result on the screen
 
 node = result
 
